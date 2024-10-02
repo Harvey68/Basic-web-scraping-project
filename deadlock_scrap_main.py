@@ -29,13 +29,9 @@ for i in range(len(rank_data)):
 
     next_element = games_played_parent[i].next_element
     class_next = next_element.get("class")
-    if class_next == ['text-gray-400']:
-        hero = "N/A"
-        games_played = "N/A"
-        count +=1
-    else:
-        hero =  hero_data[i-count].text
-        games_played = re.sub(r'[\(\)]|games',"",games_played_data[i-count].text)
+    hero =  hero_data[i].get("text","N/A")
+    games_played = re.sub(r'[\(\)]|games',"",games_played_data[i].get("text","N/A"))
+
     leaderboard_data ={
         "Rank": rank,
         "Player": player,
@@ -48,7 +44,7 @@ for i in range(len(rank_data)):
 
 
 
-directory = r"D:\CODING\baisc_web-scrapping_project\Leaderboard_csv_txt"
+directory = r".\Leaderboard_csv_txt"
 time = datetime.now().strftime("%b%d_%y")
 csv_file = f"Deadlock_Leaderboard_{time}.csv"
 filepath = os.path.join(directory,csv_file)
