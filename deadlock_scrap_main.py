@@ -21,7 +21,6 @@ games_played_parent = soup.find_all("div", class_="flex items-center gap-1 md:ga
 
 data_list =[]
 
-
 for i, (rank,player,elo,hero,games_played) in enumerate(zip(rank_data,player_data,elo_data,hero_data,games_played_data)):
     rank_text = rank.text
     player_text = player.text
@@ -43,9 +42,6 @@ for i, (rank,player,elo,hero,games_played) in enumerate(zip(rank_data,player_dat
         "Games Played": games_played_text,
     }
     data_list.append(leaderboard_data)
-
-
-
 
 directory = r"D:\CODING\baisc_web-scrapping_project\Leaderboard_csv_txt"
 time = datetime.now().strftime("%b%d_%y")
