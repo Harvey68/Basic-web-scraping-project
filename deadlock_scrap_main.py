@@ -20,10 +20,7 @@ row_count = soup.find_all("tr")
 games_played_parent = soup.find_all("div", class_="flex items-center gap-1 md:gap-2 min-w-[100px] md:min-w-0")
 
 data_list =[]
-count = 0
 
-
-print(hero_data)
 
 for i, (rank,player,elo,hero,games_played) in enumerate(zip(rank_data,player_data,elo_data,hero_data,games_played_data)):
     rank_text = rank.text
@@ -36,7 +33,7 @@ for i, (rank,player,elo,hero,games_played) in enumerate(zip(rank_data,player_dat
         games_played_text = "N/A"
     else:
         hero_text =  hero_data[i].text
-        games_played_text = re.sub(r'[\(\)]|games',"",games_played_data[i].text)
+        games_played_text = re.sub(r'[\(\)]|games',"",games_played_data[i].text.strip())
 
     leaderboard_data ={
         "Rank": rank_text,
@@ -45,7 +42,7 @@ for i, (rank,player,elo,hero,games_played) in enumerate(zip(rank_data,player_dat
         "Hero": hero_text,
         "Games Played": games_played_text,
     }
-    data_list.append(leaderboard_data,)
+    data_list.append(leaderboard_data)
 
 
 
